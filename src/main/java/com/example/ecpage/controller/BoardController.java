@@ -1,7 +1,8 @@
 package com.example.ecpage.controller;
 
-import com.example.ecpage.model.Board;
-import com.example.ecpage.reprository.BoardRepository;
+
+import com.example.ecpage.entity.Board;
+import com.example.ecpage.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import java.util.List;
 public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
+
 
     @GetMapping("/list")
     public String list(Model model) {
@@ -46,5 +48,6 @@ public class BoardController {
         boardRepository.save(board);
         return "redirect:/board/list";
     }
+
 
 }

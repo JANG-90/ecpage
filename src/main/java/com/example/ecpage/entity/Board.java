@@ -1,13 +1,17 @@
-package com.example.ecpage.model;
+package com.example.ecpage.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Getter
 
 public class Board {
     @Id
