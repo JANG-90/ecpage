@@ -51,4 +51,12 @@ public class ItemController {
         return "redirect:/shopitem/itemlist1";
     }
 
+    @GetMapping("/delete")
+    public String delete(Long id){
+        Item target =itemRepository.findById(id).orElse(null);
+        if (target != null){
+            itemRepository.delete(target);
+        }
+        return "redirect:/shopitem/itemlist1";
+    }
 }

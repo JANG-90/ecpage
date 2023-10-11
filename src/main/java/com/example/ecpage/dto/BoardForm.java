@@ -2,13 +2,13 @@ package com.example.ecpage.dto;
 
 
 import com.example.ecpage.entity.Board;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @ToString
 @AllArgsConstructor
 @Getter
+@Setter
+@NoArgsConstructor
 public class BoardForm {
 
 
@@ -17,11 +17,8 @@ public class BoardForm {
     private String content;
 
     public Board toEntity() {
-        return new Board(id, title, content);
-    }
 
-    public BoardForm toFormFromEntity() {
-        return new BoardForm(id, title, content);
+        return new Board(id, title, content);
     }
 
 }
