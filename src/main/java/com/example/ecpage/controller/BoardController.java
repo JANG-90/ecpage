@@ -1,6 +1,7 @@
 package com.example.ecpage.controller;
 
 
+import com.example.ecpage.dto.BoardForm;
 import com.example.ecpage.entity.Board;
 import com.example.ecpage.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,6 +26,13 @@ public class BoardController {
     @GetMapping("/list")
     public String list(Model model) {
         List<Board> boards = boardRepository.findAll();
+        List<BoardForm> boardFormList = new ArrayList<>();
+        for (Board board : boards) {
+            BoardForm boardForm = new BoardForm(board.getId(), board.getTitle(), board.getContent());
+            boardFormList.add(boardForm);
+        }
+
+
         model.addAttribute("boards", boards);
         return "board/list";
     }
@@ -46,6 +55,16 @@ public class BoardController {
             return "/board/form";
         }
         boardRepository.save(board);
+        return "redirect:/board/list";
+    }
+
+
+    @GetMapping("/delete")
+    public String delete(Long id) {
+        Board target = boardRepository.findById(id).orElse(null);
+        if (target != null) {
+            boardRepository.delete(target);
+        }
         return "redirect:/board/list";
     }
 

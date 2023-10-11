@@ -30,6 +30,9 @@
               </div>
         <button type="submit" class="btn btn-primary">등록</button>
         <a type="button" class="btn btn-primary" th:href="@{/board/list}">뒤로가기</a>
+            <div class="text-right">
+                <a type="button" class="btn btn-primary" th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
+            </div>
         </form>
     </div>
 

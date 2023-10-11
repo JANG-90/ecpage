@@ -18,6 +18,10 @@ public class BoardForm {
 
     public Board toEntity() {
         return new Board(id, title, content);
-
     }
+
+    public BoardForm toFormFromEntity() {
+        return new BoardForm(id, title, content);
+    }
+
 }
