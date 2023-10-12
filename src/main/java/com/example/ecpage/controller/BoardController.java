@@ -40,9 +40,9 @@ public class BoardController {
         List<BoardForm> boardFormList = new ArrayList<>();
         for (Board board : boards) {
             BoardForm boardForm = new BoardForm(board.getId(), board.getTitle(), board.getContent());
-            log.info("dto조회메시지");
             boardFormList.add(boardForm);
         }
+            log.info("dto리스트조회메시지");
         model.addAttribute("boards", boards);
         return "board/list";
     }
@@ -56,7 +56,7 @@ public class BoardController {
                 boardForm.setId(board.getId());
                 boardForm.setTitle(board.getTitle());
                 boardForm.setContent(board.getContent());
-                log.info("dto글작성메시지");
+                log.info("dto글수정메시지");
             }
         }
         model.addAttribute("boardForm", boardForm);
